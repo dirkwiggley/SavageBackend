@@ -15,10 +15,13 @@ export interface WebSocketItemInterface {
 }        
 */
 
+import { Socket } from "socket.io";
+
 
 export interface WSOrganizerInterface {
     id: number;
-    ws: WebSocket;
+    // ws: WebSocket;
+    ws: Socket;
     userId: number;
     userName: string;
     subscriptions: Array<string>;
@@ -32,13 +35,15 @@ export interface WSOrganizerInterface {
 
 export class WSOrganizer implements WSOrganizerInterface{
     id: number;
-    ws: WebSocket;
+    // ws: WebSocket;
+    ws: Socket;
     userId: number;
     userName: string;
     subscriptions: Array<string> = [];
     static nextId: number = 1;
 
-    constructor(ws: WebSocket, userId: number, userName: string) {
+    // constructor(ws: WebSocket, userId: number, userName: string) {
+    constructor(ws: Socket, userId: number, userName: string) {        
         this.id = WSOrganizer.nextId++;
         this.ws = ws;
         this.userId = userId;

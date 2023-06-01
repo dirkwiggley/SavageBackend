@@ -135,11 +135,12 @@ class CombatTracker {
 
     // Web Service test
     sendMessage(fromUserId: number, toUserId: number, message: string, res: Express.Response) {
-        const controller : SocketController = new SocketController()
-        const socket = controller.getWsForUserId(toUserId);
-        const msg = this.createResponse(SEND_MESSAGE,200, message);
-        socket.send(JSON.stringify(msg));
-        res.status(200).send("SUCCESS");
+        // TODO: Update
+        // const controller : SocketController = new SocketController()
+        // const socket = controller.getWsForUserId(toUserId);
+        // const msg = this.createResponse(SEND_MESSAGE,200, message);
+        // socket.send(JSON.stringify(msg));
+        // res.status(200).send("SUCCESS");
     }
 
     init(res: Express.Response) {
