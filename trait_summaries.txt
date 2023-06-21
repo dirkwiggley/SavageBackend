@@ -1,0 +1,41 @@
+Trait Summaries
+ATTRIBUTES
+Agility: Nimbleness, dexterity, and overall physical coordination of muscles and reflexes.
+Smarts: Raw intellect, perception, and ability to sort and make use of complex information.
+Spirit: Inner strength and willpower.
+Strength: Raw muscle power.
+Vigor: Endurance, health, and constitution.
+
+SKILLS
+Academics (Smarts): Knowledge of liberal arts, social sciences, literature, history, etc.
+Athletics (Agility): Overall athletic coordination and ability. Climbing, jumping, balancing, wrestling, skiing, swimming, throwing, or catching.
+Battle (Smarts): Strategy, tactics, and understanding military operations. A key skill in Mass Battles.
+Boating (Agility): Ability to sail or pilot a boat, ship, or other watercraft.
+Common Knowledge (Smarts): General knowledge of a character's world.
+Driving (Agility): The ability to control, steer, and operate ground vehicles.
+Electronics (Smarts): The use of electronic devices and systems.
+Faith (Spirit): The arcane skill for Arcane Background (Miracles).
+Fighting (Agility): Skill in armed and unarmed combat.
+Focus (Spirit): The arcane skill for Arcane Background (Gifted).
+Gambling (Smarts): Skill and familiarity with games of chance.
+Hacking (Smarts): Coding, programming, and breaking into computer systems.
+Healing (Smarts): The ability to treat and heal Wounds and diseases, and decipher forensic evidence.
+Intimidation (Spirit): A character's ability to threaten others into doing what she wants.
+Language (Smarts): Knowledge and fluency in a particular language.
+Notice (Smarts): General awareness and perception.
+Occult (Smarts): Knowledge of supernatural events, creatures, history, and ways.
+Performance (Spirit): Singing, dancing, acting, or other forms of public expression.
+Persuasion (Spirit): The ability to convince others to do what you want.
+Piloting (Agility): Skill with maneuvering vehicles that operate in three dimensions, such as airplanes,helicopters, spaceships, etc.
+Psionics (Smarts): The arcane skill for Arcane Background (Psionics).
+Repair (Smarts): The ability to fix mechanical and electrical gadgets.
+Research (Smarts): Finding written information from various sources.
+Riding (Agility): A character's skill in mounting, controlling, and riding a tamed beast.
+Science (Smarts): Knowledge of scientific fields such as biology, chemistry, geology, engineering, etc.
+Shooting (Agility): Precision with any type of ranged weapon.
+Spellcasting (Smarts): The arcane skill for Arcane Background (Magic).
+Stealth (Agility): The ability to sneak and hide.
+Survival (Smarts): How to find food, water, or shelter, and tracking.
+Taunt (Smarts): Insulting or belittling another. Almost always done as a Test (page 108).
+Thievery (Agility): Sleight of hand, pickpocketing, lockpicking, and other typically shady feats.
+Weird Science (Smarts): The arcane skill for Arcane Background (Weird Science).

@@ -12,6 +12,10 @@ import userRoute from "./routes/users.js"
 import roleRoute from "./routes/roles.js"
 import trackerRoute from "./routes/combatTrackers.js"
 import dbUtilsRoute from "./routes/dbutils.js"
+import dbRabilitiesRoute from "./routes/rabilities.js"
+import dbHindrancesRoute from "./routes/hindrances.js"
+import dbAttributesRoute from "./routes/attributes.js";
+import dbSkillsRoute from "./routes/skills.js";
 import testRoute from "./routes/test.js"
 
 interface Response {
@@ -91,6 +95,10 @@ app.use("/users", userRoute);
 app.use("/roles", roleRoute);
 app.use("/trackers", trackerRoute);
 app.use("/dbutils", dbUtilsRoute);
+app.use("/rabilities", dbRabilitiesRoute);
+app.use("/hindrances", dbHindrancesRoute);
+app.use("/attributes", dbAttributesRoute);
+app.use("/skills", dbSkillsRoute);
 app.use("/test", testRoute);
 app.use("/", testRoute);
 
