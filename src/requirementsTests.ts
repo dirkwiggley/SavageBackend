@@ -99,6 +99,11 @@ const ranks: Array<RankInterface> = [
   }
 ]
 
+export const getMinAdvances = (rankName: string) => {
+  const rank = ranks.find(rank => rank.name === rankName);
+  return rank.advances;
+}
+
 const checkCriteria = (parameter: any, character) => {
   const criteriaKey = Object.keys(parameter)[0];
   const criteriaValue = parameter[criteriaKey];
@@ -117,7 +122,7 @@ const checkCriteria = (parameter: any, character) => {
       case 'skill':
         return checkSkillsCriteria(criteriaValue, character.skills);
       case 'rank':
-        return checkRankCriteria(criteriaValue, character.advances);
+        return checkRankCriteria(parameter, character.advances);
       default:
         return false;
     }
@@ -200,8 +205,10 @@ export function checkCharacterMeetsCriteria(jsonCriteria: any, character: Charac
         }
       }
       return false;
+    } else {
+      // In this case there should be only 1 element in jsonCriteria
+      return checkCriteria(jsonCriteria, character);
     }
-    
   }
   
   function checkRaceCriteria(criteria: any, race: RaceInterface): boolean {
@@ -250,6 +257,6 @@ export function checkCharacterMeetsCriteria(jsonCriteria: any, character: Charac
   }
   
   function checkRankCriteria(criteria: any, advances: number): boolean {
-    const characterRank = ranks.find(rank => rank.advances >= advances);
-    return (characterRank.advances >= criteria.name);
+    const criteriaAdvances = getMinAdvances(criteria.rank);
+    return (advances >= criteriaAdvances);
   }

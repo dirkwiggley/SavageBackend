@@ -14,35 +14,30 @@ router.get('/', function(req: any, res: any, next: any) {
   const d4: Dice = { name: "d4", rank: 2 };
   const d6: Dice = { name: "d6", rank: 3 };
   const d8: Dice = { name: "d8", rank: 4 };
-  const attr1: Attribute = { name: "Agility", };
-  const skill1: Skill = {
+  const attr1: Attribute = { name: "Agility" };
+  const fighting: Skill = {
       name:"Fighting",
       dice: d8,
       source:""
   }
-  const skill2: Skill = {
+  const shooting: Skill = {
       name:"Shooting",
       dice: d8,
       source:""
   }
-  const skill3: Skill = {
-      name: "Stealth",
-      dice: d4,
-      source:""
-  }
-  const criteria = { or: [ { and: [ {rank: "Seasoned"}, {skill:skill1}, {skill:skill2} ] }, { and: [ {skill:skill3} , {rank: "Seasoned"} ] } ] };
+  const criteria = { rank:"Heroic"};
   let character = {
       rabilities: [],
       attributes: [],
       hindrances: [],
       edges: [],
       skills: [ 
-          { name: "Stealth", attribute: attr1, dice: d8, type: "Combat" },
+          { name: "Fighting", attribute: attr1, dice: d8, type: "Combat" },
+          { name: "Shooting", attribute: attr1, dice: d8, type: "Combat" },
       ],
-      advances: 3
+      advances: 5
   }
-res.send(checkCharacterMeetsCriteria(criteria, character));
-
+  res.send(checkCharacterMeetsCriteria(criteria, character));
 });
 
 router.get('/init', function (req, res, next) {
