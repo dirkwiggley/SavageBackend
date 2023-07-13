@@ -3,7 +3,7 @@ ATTRIBUTES
 Agility: Nimbleness, dexterity, and overall physical coordination of muscles and reflexes.
 Smarts: Raw intellect, perception, and ability to sort and make use of complex information.
 Spirit: Inner strength and willpower.
-Strength: Raw muscle power.
+Strength: Raw muscle power.	
 Vigor: Endurance, health, and constitution.
 
 SKILLS

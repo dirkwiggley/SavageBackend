@@ -10,7 +10,7 @@ VALUE ABILITY
 2     Adaptable (1): The race has great variation among its people and cultures. Characters start with a free Novice Edge of their choice (and must meet all the Edge's Requirements).
 3     Additional Action (1): The being has additional appendages, enhanced reflexes, or exceptional eye-hand coordination. He may ignore 2 points of Multi-Action penalties each turn.
 1/2   Aquatic/Semi-Aquatic (1): For one point the character is semi-aquatic and can hold his breath for 15 minutes before checking for drowning. For two, he's native to the water. He cannot drownin oxygenated liquid and moves his full Pace when swimming (see Movement, page 92).
-1     Armor (3): The species has a thick hide or is encrusted in solid material like scaly plating or1even rock. This grants Armor +2 each time it's taken.
+1     Armor (3): The species has a thick hide or is encrusted in solid material like scaly plating or even rock. This grants Armor +2 each time it's taken.
 2     Attribute Increase (U): During character creation, the species increases a particular attribute (Agility, Smarts, Spirit, Strength, or Vigor) one die type. This increases the Trait's maximum by one as well.
 1     Bite (1): The race has fangs that cause Strength+d4 damage. See Natural Weapons, page 104 for more information.
 1     Burrowing (1): The species can burrow into loose earth and move through it at half normal Pace (he cannot run). He cannot normally be attacked while burrowing, and can attempt to surprise opponents who didn't see him coming by making an opposed Stealth vs. Notice roll. If successful, the burrower adds +2 to his attack and damage rolls that round, or +4 with a raise (he has The Drop, page 100).
@@ -22,10 +22,10 @@ VALUE ABILITY
 2/4/6 Flight (1): The species can fly at Pace 6 (or 12 for 4 points) and "run" for extra movement as usual. For 6 points, the being can fly at Pace 24 and may "run" for 2d6 of additiona movement. Maneuvering uses the Athletics skill. Racial flight presumes some kind of wings which can be targeted or fouled (a Bound or Entangled character cannot fly).
 2     Hardy (1): A second Shaken result in combat does not cause a Wound.
 1/2   Horns (1): The being has a horn or horns that cause Str+d4 damage (or Str+d6 for 2 points). See Natural Weapons, page 104, for more information.
-1     Immune to Poison or Disease (2): The species is immune to poison or disease (your choice).1 It may be taken twice for both effects. 
+1     Immune to Poison or Disease (2): The species is immune to poison or disease (your choice). It may be taken twice for both effects. 
 1     Infravision (1): The creature "sees" heat, either through eyes or other sensory organs. This halves Illumination penalties when attacking warm targets (including invisible beings).
 2     Leaper (1): The character can jump twice as far as listed under Movement, page 92. Inaddition, he adds +4 to damage when leaping as part of a Wild Attack instead of the usual+2 (unless in a closed or confined space where he cannot leap horizontally or vertically - GM's call).
-1     Low Light Vision (1): The being ignores penalties for Dim or Dark illumination (but not1Pitch Darkness).
+1     Low Light Vision (1): The being ignores penalties for Dim or Dark illumination (but not Pitch Darkness).
 1     No Vital Organs (1): These species have hidden, extremely tough, or redundant vital1 organs. Called Shots do no extra damage against them. 
 2     Pace (2): The character's Pace is increased by +2 and his running die is increased a die type.
 1     Parry (3): The creature's natural Parry is increased by +1. This may be due to a prehensile tail, extra limbs, enhanced reflexes, or even latent psi-sense.
@@ -56,3 +56,4 @@ VALUE ABILITY
 -1/-2 Reduced Pace (1): For -1 point, reduce Pace by 1 and the running die a die type (d4 is reduced to d4-1). For -2 points, reduce Pace another 2 points and subtract 2 from Athletics and rolls to resist Athletics where movement and mobility are integral to the challenge (GM's call).
 -1    Size (1): The entity is smaller than average, reducing its Size and Toughness by 1 (see the Size Table, page 179).
 -1/-2 Skill Penalty (Once per Skill): The race suffers a -1 penalty to a very commonly used skill such as Fighting, Persuasion, or even Piloting in a game focused on airplanes (the GM decides based on her campaign). If the skill is less common or only comes up in certain situations, the penalty is -2. For 2 points, the penalty is -2/-4 instead.
+	

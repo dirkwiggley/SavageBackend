@@ -16,7 +16,7 @@ import dbRabilitiesRoute from "./routes/rabilities.js"
 import dbHindrancesRoute from "./routes/hindrances.js"
 import dbAttributesRoute from "./routes/attributes.js";
 import dbSkillsRoute from "./routes/skills.js";
-import testRoute from "./routes/test.js"
+import testRoute from "./routes/tests.js"
 
 interface Response {
   id?: number;

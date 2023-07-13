@@ -78,7 +78,7 @@ class DBSKILLS {
     }
   };
 
-  updateAttribute = (id: number, name: string, abbr: string, desc: string, type: string, source: string, res: Express.Response, next: any) => {
+  updateSkill = (id: number, name: string, abbr: string, desc: string, type: string, source: string, res: Express.Response, next: any) => {
     let db = this.dbUtils.getDb();
 
     try {
@@ -98,7 +98,7 @@ class DBSKILLS {
     res.status(200).send({ response: "Skill updated"})
   };
 
-  insertAttribute = (name: string, abbr: string, desc: string, type: string, source: string, res: Express.Response, next: any) => {
+  insertSkill = (name: string, abbr: string, desc: string, type: string, source: string, res: Express.Response, next: any) => {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
