@@ -77,7 +77,7 @@ export interface RankInterface {
   name: string;
 }
 
-const ranks: Array<RankInterface> = [
+export const ranks: Array<RankInterface> = [
   { 
     advances: 0,
     name: "Novice"
@@ -122,7 +122,7 @@ const checkCriteria = (parameter: any, character) => {
       case 'skill':
         return checkSkillsCriteria(criteriaValue, character.skills);
       case 'rank':
-        return checkRankCriteria(parameter, character.advances);
+        return checkRankCriteria(criteriaValue, character.advances);
       default:
         return false;
     }
@@ -257,6 +257,6 @@ export function checkCharacterMeetsCriteria(jsonCriteria: any, character: Charac
   }
   
   function checkRankCriteria(criteria: any, advances: number): boolean {
-    const criteriaAdvances = getMinAdvances(criteria.rank);
+    const criteriaAdvances = getMinAdvances(criteria);
     return (advances >= criteriaAdvances);
   }

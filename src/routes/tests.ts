@@ -2,7 +2,7 @@ import express from "express"
 import DBTest from "../db/DBTest.js"
 import DBUsers from "../db/DBUsers.js";
 
-import { checkCharacterMeetsCriteria, Dice, Attribute, Hindrance, RAbility, Edge, Skill, RaceInterface, DiceInterface, CharacterInterface } from "../requirementsTests.js";
+import { checkCharacterMeetsCriteria, Dice, Attribute, Hindrance, RAbility, Edge, Skill, RaceInterface, DiceInterface, CharacterInterface } from "../attributeValidation.js";
 
 const router = express.Router()
 
@@ -10,7 +10,7 @@ const router = express.Router()
 router.get('/', function(req: any, res: any, next: any) {
   // const dBTest = new DBTest()
   // dBTest.getTest(res, next)
-  const d4minus2: Dice = { name: "d4", rank: 1}
+  const d4minus2: Dice = { name: "d4minus2", rank: 1}
   const d4: Dice = { name: "d4", rank: 2 };
   const d6: Dice = { name: "d6", rank: 3 };
   const d8: Dice = { name: "d8", rank: 4 };
@@ -25,18 +25,26 @@ router.get('/', function(req: any, res: any, next: any) {
       dice: d8,
       source:""
   }
-  const criteria = { rank:"Heroic"};
-  let character = {
+  const stealth: Skill = {
+    name: "Stealth",
+    dice: d4,
+    source: ""
+}
+  let character: CharacterInterface = {
       rabilities: [],
       attributes: [],
       hindrances: [],
       edges: [],
-      skills: [ 
-          { name: "Fighting", attribute: attr1, dice: d8, type: "Combat" },
-          { name: "Shooting", attribute: attr1, dice: d8, type: "Combat" },
-      ],
+      skills: 
+      [ { name: "Stealth", attribute: attr1, dice: d4minus2, type: "Combat" } ],
+      // [ 
+      //     { name: "Fighting", attribute: attr1, dice: d8, type: "Combat" },
+      //     { name: "Shooting", attribute: attr1, dice: d8, type: "Combat" },
+      // ],
       advances: 5
   }
+  // const criteria = { rank: "Novice" };
+  const criteria = { or: [{ and: [{ skill: fighting }, { skill: shooting }] }, { skill: stealth }] };
   res.send(checkCharacterMeetsCriteria(criteria, character));
 });
 
