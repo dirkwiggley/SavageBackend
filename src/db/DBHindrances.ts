@@ -106,15 +106,10 @@ class  DRHindrances {
     try {
       let db = this.dbUtils.getDb();
       const drop = db.prepare("DROP TABLE hindrances");
-      drop.run("DROP TABLE hindrance", function (err: string) {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        } else {
-          console.log("Dropped table");
-          res.send("Dropped hindrance table");
-        }
-      });
+      drop.run();
+      console.log("Dropped hindrances table");
+      res.send("Dropped hindrances table");
+
     } catch (err) {
       console.error(err);
       return next(err);

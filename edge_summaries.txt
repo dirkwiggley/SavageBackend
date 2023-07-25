@@ -10,13 +10,9 @@ Arcane Background Novice Allows access to the Arcane Backgrounds listed in Chapt
 
 Arcane Resistance Novice, SPI d8 Arcane skills targeting the hero suffer a −2 penalty (even if cast by allies!); magical damage is reduced by 2.
 
-Improved Arcane Resistance Novice, Arcane Resistance As Arcane Resistance except penalty is increased to −4 and magical damage is reduced by 4.
-
 Aristocrat Novice +2 to Common Knowledge and networking with upper class.
 
 Attractive Novice, VIG d6 +1 to Performance and Persuasion rolls.
-
-Very Attractive Novice, Attractive +2 to Performance and Persuasion rolls.
 
 Berserk Novice After being Shaken or Wounded, melee attacks must be Wild Attacks, +1 die type to Strength, +2 to Toughness, ignore one level of Wound penalties, Critical Failure on Fighting roll hits random target. Take Fatigue after every five consecutive rounds, may choose to end rage with Smarts roll –2.
 
@@ -36,19 +32,23 @@ Famous Seasoned, Fame +2 Persuasion when recognized, 5× or more usual fee for P
 
 Fast Healer Novice, VIG d8 +2 Vigor when rolling for natural healing; check every 3 days.
 
+Filthy Rich Novice, Rich Five times starting funds and $500K average salary.
+
 Fleet-Footed Novice, AGI d6 Pace +2, increase running die one step.
+
+Great Luck Novice, Luck +2 Bennies at the start of each session.
+
+Improved Arcane Resistance Novice, Arcane Resistance As Arcane Resistance except penalty is increased to −4 and magical damage is reduced by 4.
 
 Linguist Novice, SMA d6 Character has d6 in languages equal to half her Smarts die.
 
 Luck Novice +1 Benny at the start of each session.
 
-Great Luck Novice, Luck +2 Bennies at the start of each session.
-
 Quick Novice, AGI d8 The hero may discard and redraw Action Cards of 5 or lower.
 
 Rich Novice Character starts with three times the starting funds and a $150K annual salary.
 
-Filthy Rich Novice, Rich Five times starting funds and $500K average salary.
+Very Attractive Novice, Attractive +2 to Performance and Persuasion rolls.
 
 COMBAT EDGES
 EDGE REQUIREMENTS SUMMARY

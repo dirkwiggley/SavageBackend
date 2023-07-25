@@ -100,15 +100,9 @@ class DBRABILITIES {
     try {
       let db = this.dbUtils.getDb();
       const drop = db.prepare("DROP TABLE rabilities");
-      drop.run("DROP TABLE rabilities", function (err) {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        } else {
-          console.log("Dropped table");
-          res.send("Dropped rability table");
-        }
-      });
+      drop.run();
+      console.log("Dropped table");
+      res.send("Dropped rability table");
     } catch (err) {
       console.error(err);
       return next(err);

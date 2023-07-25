@@ -123,15 +123,9 @@ class DBSKILLS {
     try {
       let db = this.dbUtils.getDb();
       const drop = db.prepare("DROP TABLE skills");
-      drop.run("DROP TABLE skills", function (err) {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        } else {
-          console.log("Dropped table");
-          res.status(200).send("Dropped skills table");
-        }
-      });
+      drop.run();
+      console.log("Dropped table");
+      res.status(200).send("Dropped skills table");
     } catch (err) {
       console.error(err);
       return next(err);

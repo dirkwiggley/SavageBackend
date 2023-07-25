@@ -14,8 +14,9 @@ import trackerRoute from "./routes/combatTrackers.js"
 import dbUtilsRoute from "./routes/dbutils.js"
 import dbRabilitiesRoute from "./routes/rabilities.js"
 import dbHindrancesRoute from "./routes/hindrances.js"
-import dbAttributesRoute from "./routes/attributes.js";
-import dbSkillsRoute from "./routes/skills.js";
+import dbAttributesRoute from "./routes/attributes.js"
+import dbSkillsRoute from "./routes/skills.js"
+import dbEdgesRoute from "./routes/edges.js"
 import testRoute from "./routes/tests.js"
 
 interface Response {
@@ -99,6 +100,7 @@ app.use("/rabilities", dbRabilitiesRoute);
 app.use("/hindrances", dbHindrancesRoute);
 app.use("/attributes", dbAttributesRoute);
 app.use("/skills", dbSkillsRoute);
+app.use("/edges",dbEdgesRoute);
 app.use("/test", testRoute);
 app.use("/", testRoute);
 
