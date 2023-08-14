@@ -2,14 +2,14 @@ import { createError } from "../utils/error.js";
 import DBUtils from "./DBUtils.js";
 import Express from "express";
 
-class DBDICE {
+class DBDice {
   private dbUtils: DBUtils | null = null;
 
   constructor() {
     this.dbUtils = new DBUtils();
   }
 
-  getDBDice = (res: Express.Response, next: any) => {
+  getDice = (res: Express.Response, next: any) => {
     try {
       let db = this.dbUtils.getDb();
 
@@ -61,7 +61,7 @@ class DBDICE {
     }
   };
 
-  updateSkill = (id: number, name: string, rank: number, res: Express.Response, next: any) => {
+  updateDice = (id: number, name: string, rank: number, res: Express.Response, next: any) => {
     let db = this.dbUtils.getDb();
 
     try {
@@ -78,7 +78,7 @@ class DBDICE {
     res.status(200).send({ response: "Dice updated"})
   };
 
-  insertSkill = (name: string, rank: number, res: Express.Response, next: any) => {
+  insertDice = (name: string, rank: number, res: Express.Response, next: any) => {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
@@ -117,4 +117,4 @@ class DBDICE {
   };
 }
 
-export default DBDICE;
+export default DBDice;

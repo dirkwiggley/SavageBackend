@@ -92,7 +92,7 @@ class DBEdges {
       const edges = [
         { name: "Alertness", type: "Background", subtype: {}, desc: "+2 to Notice rolls.", validation: RANK_NOVICE, source: "SWADE" },
         { name: "Ambidexterous", type: "Background", subtype: {}, desc: "+2 to Common Knowledge and networking with upper class.", validation: RANK_NOVICE, source: "SWADE" },
-        { name: "Arcane Background", type: "Background", subtype: {}, desc: "Allows access to the Arcane Backgrounds listed in Chapter Five.", validation: RANK_NOVICE, source: "SWADE" },
+        { name: "Arcane Background", type: "Background", subtype: {formula:{name:"string",skill:"string",starting_powers:"number",power_points:"number",source:"string"}}, desc: "Allows access to the Arcane Backgrounds listed in Chapter Five.", validation: RANK_NOVICE, source: "SWADE" },
         { name: "Arcane Resistance", type: "Background", subtype: {hide:EDGE_IMPROVED_ARCANE_RESISTANCE}, desc: "Arcane skills targeting the hero suffer a −2 penalty (even if cast by allies!); magical damage is reduced by 2.", validation: SPI_D8, source: "SWADE" },
         { name: "Aristocrat", type: "Background", subtype: {}, desc: "+2 to Common Knowledge and networking with upper class.", validation: RANK_NOVICE, source: "SWADE" },
         { name: "Attractive", type: "Background", subtype: {hide:EDGE_VERY_ATTRACTIVE}, desc: "+1 to Performance and Persuasion rolls.", validation: {and:[RANK_NOVICE,VIG_D6]}, source: "SWADE" },

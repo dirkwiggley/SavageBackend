@@ -3,9 +3,6 @@ import * as dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import SocketController from "./SocketController.js"
-import http from "http";
-import { Server } from "socket.io";
-// import { WebSocketServer } from "ws";
 
 import authRoute from "./routes/auth.js"
 import userRoute from "./routes/users.js"
@@ -17,6 +14,9 @@ import dbHindrancesRoute from "./routes/hindrances.js"
 import dbAttributesRoute from "./routes/attributes.js"
 import dbSkillsRoute from "./routes/skills.js"
 import dbEdgesRoute from "./routes/edges.js"
+import dbCampaigns from "./routes/campaigns.js"
+import dbCoreSkills from "./routes/coreskills.js"
+import dbPlayersRoute from "./routes/players.js"
 import testRoute from "./routes/tests.js"
 
 interface Response {
@@ -101,6 +101,9 @@ app.use("/hindrances", dbHindrancesRoute);
 app.use("/attributes", dbAttributesRoute);
 app.use("/skills", dbSkillsRoute);
 app.use("/edges",dbEdgesRoute);
+app.use("/campaigns", dbCampaigns);
+app.use("/players", dbPlayersRoute);
+app.use("/coreskills", dbCoreSkills);
 app.use("/test", testRoute);
 app.use("/", testRoute);
 
