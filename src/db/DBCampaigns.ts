@@ -7,6 +7,17 @@ interface UserInterface {
   nickname: string
 }
 
+interface CampaignInterface {
+  id?: number,
+  name: string,
+  ownerid: number,
+  ownernickname: string,
+  hindrances: number,
+  attributes: number,
+  skills: number,
+  players?: UserInterface[];
+}
+
 class DBCampaigns {
   private dbUtils: DBUtils | null = null;
 
@@ -59,7 +70,7 @@ class DBCampaigns {
   getCampaignPlayers = (campaignId: number) => {
     let db = this.dbUtils.getDb();
 
-    const select = db.prepare("SELECT playerid FROM players WHERE campaignid = ?");
+    const select = db.prepare("SELECT * FROM players WHERE campaignid = ?");
     return select.all(campaignId);
 }
 
@@ -84,13 +95,103 @@ class DBCampaigns {
 
       const select = db.prepare("SELECT * FROM campaigns WHERE id = ?");
       const results = select.get(id);
-      const players = this.getCampaignPlayers(results.id);
-      results.players = players;
-      res.status(200).send(results);
+      if (results) {
+        const players = this.getCampaignPlayers(id);
+        results.players = players;
+        res.status(200).send(results);
+      } else {
+        res.status(500).send("Campaign not found");
+      }
+
     } catch(err) {
       console.error(err);
       return next(err);
     }
+  }
+
+  insertPlayers = (db, campaignId: number, campaignName: string, players: UserInterface[]) => {
+    if (campaignId) {
+      // Clean up possible detritus
+      const findPlayers = db.prepare("SELECT id FROM players WHERE campaignid = ?");
+      const oldPlayers = findPlayers.get(campaignId);
+      if (oldPlayers) {
+        const deletePlayers = db.prepare("DELETE FROM players WHERE campaignid = ?");
+        deletePlayers.run(campaignId);
+      }
+      if (players) {
+        const insertPlayer = db.prepare("INSERT INTO players VALUES (@id, @playerid, @playernickname, @campaignid, @campaignname)");
+        players.forEach(player => {
+          insertPlayer.run({
+            id: null,
+            playerid: player.id,
+            playernickname: player.nickname,
+            campaignid: campaignId,
+            campaignname: campaignName
+          });
+        });
+      }
+    }
+  }
+
+  createCampaign = (campaignInfo: CampaignInterface, res: Express.Response, next: any) => {
+    try {
+      let db = this.dbUtils.getDb();
+
+      // Skip if this campaign name already exists
+      const select = db.prepare("SELECT id FROM campaigns WHERE name = ?");
+      const campaignExists = select.get(campaignInfo.name);
+      if (!campaignExists) {
+        const insert = db.prepare("INSERT INTO campaigns VALUES (@id, @name, @ownerid, @ownernickname, @hindrances, @attributes, @skills)");
+
+        const result = insert.run({
+          id: null,
+          name: campaignInfo.name,
+          ownerid: campaignInfo.ownerid,
+          ownernickname: campaignInfo.ownernickname,
+          hindrances: campaignInfo.hindrances,
+          attributes: campaignInfo.attributes,
+          skills: campaignInfo.skills
+        });
+
+        const campaignId = result.lastInsertRowid;
+        if (campaignInfo.players && campaignInfo.players.length > 0) {
+            this.insertPlayers(db, Number(campaignId), campaignInfo.name, campaignInfo.players)
+        }
+      } else {
+        return next(createError(500, "A campaign with this name already exists"));  
+      }
+    } catch (err) {
+      console.error(err);
+      return next(createError(500, "Illegal campaigns params"));
+    }
+    res.status(204).send();
+
+  }
+
+  updateCampaign = (campaignInfo: CampaignInterface, res: Express.Response, next: any) => {
+    if (!campaignInfo.id) return next(createError(500, "Campaign Id required"));
+
+    try {
+      let db = this.dbUtils.getDb();
+      const updateStmt = db.prepare(`UPDATE campaigns SET name = ?, ownerid = ?, ownernickname = ?, hindrances = ?, attributes = ?, skills = ? WHERE id = ?`);
+      updateStmt.run(
+        campaignInfo.name,
+        campaignInfo.ownerid,
+        campaignInfo.ownernickname,
+        campaignInfo.hindrances,
+        campaignInfo.attributes,
+        campaignInfo.skills,
+        campaignInfo.id,
+      );
+
+      if (campaignInfo.players) {
+          this.insertPlayers(db, campaignInfo.id, campaignInfo.name, campaignInfo.players)
+      }
+    } catch(err) {
+      console.error(err);
+      return next(createError(500, "Illegal campaigns params"));
+    }
+    res.status(204).send({ response: "Campaigns updated"})
   }
 
   init = (res: Express.Response, next: any) => {
@@ -111,55 +212,12 @@ class DBCampaigns {
       campaigns.forEach((campaign) => {
         insert.run(campaign.name, campaign.ownerid, campaign.ownernickname, campaign.hindrances, campaign.attributes, campaign.skills);
       });
+
       res.status(200).send("Initialized campaigns");
     } catch (err) {
       console.error(err);
       return next(err);
     }
-  };
-
-  updateCampaign = (id: number, name: string, ownerid: number, ownernickname: string, hindrances: number, attributes: number, skills: number, res: Express.Response, next: any) => {
-    let db = this.dbUtils.getDb();
-
-    try {
-      const updateStmt = db.prepare(`UPDATE campaigns SET name = ?, ownerid = ?, ownernickname = ?, hindrances = ?, attributes = ?, skills = ? WHERE id = ?`);
-      updateStmt.run(
-        name,
-        ownerid,
-        ownernickname,
-        hindrances,
-        attributes,
-        skills,
-        id
-      );
-    } catch(err) {
-      console.error(err);
-      return next(createError(500, "Illegal campaigns params"));
-    }
-    res.status(200).send({ response: "Campaigns updated"})
-  };
-
-  insertCampaign = (name: string, ownerid: number, ownernickname: string, hindrances: number, attributes: number, skills: number, res: Express.Response, next: any) => {
-    try {
-      let db = this.dbUtils.getDb();
-      const insert = db.prepare(
-        "INSERT INTO campaigns VALUES (@id, @name, @ownerid, @ownernickname, @hindrances, @attributes, @skills)"
-      );
-
-      insert.run({
-        id: null,
-        name: name,
-        ownerid: ownerid,
-        ownernickname: ownernickname,
-        hindrances: hindrances,
-        attributes: attributes,
-        skills: skills
-      });
-    } catch (err) {
-      console.error(err);
-      return next(createError(500, "Illegal campaigns params"));
-    }
-    res.status(204).send();
   };
 
   drop = (res: Express.Response, next: any) => {

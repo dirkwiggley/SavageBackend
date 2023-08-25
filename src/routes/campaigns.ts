@@ -21,6 +21,18 @@ router.get('/id/:campaignId', verifyUser, function(req: any, res: any, next: any
   dBCampaigns.getCampaignById(campaignId, res, next);
 });
 
+router.post('/', verifyUser, function(req: any, res: any, next: any) {
+  const dBCampaigns = new DBCampaigns();
+  const campaignInfo = req.body.campaignInfo;
+  dBCampaigns.createCampaign(campaignInfo, res, next);
+});
+
+router.put('/', verifyUser, function(req: any, res: any, next: any) {
+  const dBCampaigns = new DBCampaigns();
+  const campaignInfo = req.body.campaignInfo;
+  dBCampaigns.updateCampaign(campaignInfo, res, next);
+});
+
 router.get('/init', function (req, res, next) {
   const dBCampaigns = new DBCampaigns();
   dBCampaigns.init(res, next);

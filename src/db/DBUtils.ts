@@ -24,7 +24,7 @@ class DBUtils {
     return this.db;
   };
 
-  getTables = (res: Express.Response) => {
+  getTablesInternal = () => {
     var result: string[] = [];
     try {
       let db = this.getDb();
@@ -41,7 +41,10 @@ class DBUtils {
       result = []; // Don't blow up, just log
       console.error(err);
     }
-    res.send(result);
+    return result;
+  }
+  getTables = (res: Express.Response) => {
+    res.send(this.getTablesInternal());
   };
 
   getCols = (table_name: string): string[] | Error => {
