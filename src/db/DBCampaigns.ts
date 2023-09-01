@@ -119,15 +119,14 @@ class DBCampaigns {
         deletePlayers.run(campaignId);
       }
       if (players) {
-        const insertPlayer = db.prepare("INSERT INTO players VALUES (@id, @playerid, @playernickname, @campaignid, @campaignname)");
+        const insertPlayer = db.prepare("INSERT INTO players (playerid, playernickname, campaignid, campaignname) VALUES (?, ?, ?, ?)");
         players.forEach(player => {
-          insertPlayer.run({
-            id: null,
-            playerid: player.id,
-            playernickname: player.nickname,
-            campaignid: campaignId,
-            campaignname: campaignName
-          });
+          insertPlayer.run(
+            player.id,
+            player.nickname,
+            campaignId,
+            campaignName
+          );
         });
       }
     }
@@ -141,17 +140,16 @@ class DBCampaigns {
       const select = db.prepare("SELECT id FROM campaigns WHERE name = ?");
       const campaignExists = select.get(campaignInfo.name);
       if (!campaignExists) {
-        const insert = db.prepare("INSERT INTO campaigns VALUES (@id, @name, @ownerid, @ownernickname, @hindrances, @attributes, @skills)");
+        const insert = db.prepare("INSERT INTO campaigns (name, ownerid, ownernickname, hindrances, attributes, skills) VALUES (?, ?, ?, ?, ?, ?)");
 
-        const result = insert.run({
-          id: null,
-          name: campaignInfo.name,
-          ownerid: campaignInfo.ownerid,
-          ownernickname: campaignInfo.ownernickname,
-          hindrances: campaignInfo.hindrances,
-          attributes: campaignInfo.attributes,
-          skills: campaignInfo.skills
-        });
+        const result = insert.run(
+          campaignInfo.name,
+          campaignInfo.ownerid,
+          campaignInfo.ownernickname,
+          campaignInfo.hindrances,
+          campaignInfo.attributes,
+          campaignInfo.skills
+        );
 
         const campaignId = result.lastInsertRowid;
         if (campaignInfo.players && campaignInfo.players.length > 0) {
@@ -197,8 +195,11 @@ class DBCampaigns {
   init = (res: Express.Response, next: any) => {
     try {
       let db = this.dbUtils.getDb();
+      const drop = db.prepare("DROP TABLE campaigns");
+      drop.run();
+
       const create = db.prepare(
-        "CREATE TABLE IF NOT EXISTS campaigns (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, ownerid number, ownernickname TEXT, hindrances number, attributes number, skills number)"
+        "CREATE TABLE campaigns (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, ownerid number, ownernickname TEXT, hindrances number, attributes number, skills number)"
       );
       create.run();
 

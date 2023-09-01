@@ -82,14 +82,13 @@ class DBDice {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO dice VALUES (@id, @name, @rank)"
+        "INSERT INTO dice VALUES (name, rank) VALUES (?, ?)"
       );
 
-      insert.run({
-        id: null,
-        name: name,
-        rank: rank
-      });
+      insert.run(
+        name,
+        rank
+      );
     } catch (err) {
       console.error(err);
       return next(createError(500, "Illegal dice params"));

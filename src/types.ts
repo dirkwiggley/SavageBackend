@@ -6,6 +6,7 @@ export interface UserInterface {
   email: string;
   roles: string;
   campaignid?: number;
+  campaignname?: string;
   locale: string;
   active: number;
   resetpwd: number;

@@ -202,17 +202,16 @@ class DBEdges {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO edges VALUES (@id, @name, @type, @subtype, @desc, @source)"
+        "INSERT INTO edges VALUES (name, type, subtype, desc, source) VALUES (?, ?, ?, ?)"
       );
 
-      insert.run({
-        id: null,
-        name: name,
-        type: type,
-        subtype: subtype,
-        desc: desc,
-        source: source
-      });
+      insert.run(
+        name,
+        type,
+        subtype,
+        desc,
+        source
+      );
     } catch (err) {
       console.error(err);
       return next(createError(500, "Illegal edge params"));

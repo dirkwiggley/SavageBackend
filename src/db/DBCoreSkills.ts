@@ -73,15 +73,14 @@ class DBCoreSkills {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO coreskills VALUES (@id, @name, @campaignid, @source)"
+        "INSERT INTO coreskills (name, campaignid, source) VALUES (?, ?, ?)"
       );
 
-      insert.run({
-        id: null,
-        name: name,
-        campaignid: campaignid,
-        source: source
-      });
+      insert.run(
+        name,
+        campaignid,
+        source
+      );
     } catch (err) {
       console.error(err);
       return next(createError(500, "Illegal coreskills params"));

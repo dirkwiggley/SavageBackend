@@ -74,16 +74,15 @@ class DBATTRIBUTES {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO attributes VALUES (@id, @name, @abbr, @desc, @source)"
+        "INSERT INTO attributes (name, abbr, desc, source) VALUES (?, ?, ?, ?)"
       );
 
-      insert.run({
-        id: null,
-        name: name,
-        abbr: abbr,
-        desc: desc,
-        source: source
-      });
+      insert.run(
+        name,
+        abbr,
+        desc,
+        source
+      );
     } catch (err) {
       console.error(err);
       return next(createError(500, "Illegal attribute params"));

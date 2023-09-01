@@ -45,15 +45,14 @@ class DBCombatTracker {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO combat_trackers VALUES (@id, @name, @gamemaster_id, @gamemaster_name)"
+        "INSERT INTO combat_trackers (name, gamemaster_id, gamemaster_name) VALUES (?, ?, ?)"
       );
 
-      insert.run({
-        id: null,
-        name: trackerInfo.name,
-        gamemaster_id: trackerInfo.gamemaster_id,
-        gamemaster_name: trackerInfo.gamemaster_name,
-      });
+      insert.run(
+        trackerInfo.name,
+        trackerInfo.gamemaster_id,
+        trackerInfo.gamemaster_name,
+      );
     } catch (err) {
       console.error(err);
       return next(err);
@@ -86,15 +85,14 @@ class DBCombatTracker {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO tracker_users VALUES (@id, @tracker_id, @user_id, @user_name)"
+        "INSERT INTO tracker_users (tracker_id, user_id, user_name) VALUES (?, ?, ?)"
       );
 
-      insert.run({
-        id: null,
-        tracker_id: trackerUserInfo.tracker_id,
-        user_id: trackerUserInfo.user_id,
-        user_name: trackerUserInfo.user_name,
-      });
+      insert.run(
+        trackerUserInfo.tracker_id,
+        trackerUserInfo.user_id,
+        trackerUserInfo.user_name,
+      );
     } catch (err) {
       console.error(err);
       return next(err);

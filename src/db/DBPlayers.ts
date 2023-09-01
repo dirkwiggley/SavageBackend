@@ -90,16 +90,15 @@ class DBPlayers {
     try {
       let db = this.dbUtils.getDb();
       const insert = db.prepare(
-        "INSERT INTO players VALUES (@id, @playerid, @playernickname, @campaignid, @campaignname)"
+        "INSERT INTO players VALUES (playerid, playernickname, campaignid, campaignname) VALUES (?, ?, ?, ?)"
       );
 
-      insert.run({
-        id: null,
-        playerid: playerid,
-        playernickname: playernickname,
-        campaignid: campaignid,
-        campaignname: campaignname
-      });
+      insert.run(
+        playerid,
+        playernickname,
+        campaignid,
+        campaignname
+      );
     } catch (err) {
       console.error(err);
       return next(createError(500, "Illegal player params"));
