@@ -17,6 +17,7 @@ import dbEdgesRoute from "./routes/edges.js"
 import dbCampaigns from "./routes/campaigns.js"
 import dbCoreSkills from "./routes/coreskills.js"
 import dbPlayersRoute from "./routes/players.js"
+import dbDocumentsRoute from "./routes/documents.js"
 import testRoute from "./routes/tests.js"
 
 interface Response {
@@ -104,6 +105,7 @@ app.use("/edges",dbEdgesRoute);
 app.use("/campaigns", dbCampaigns);
 app.use("/players", dbPlayersRoute);
 app.use("/coreskills", dbCoreSkills);
+app.use("/documents", dbDocumentsRoute);
 app.use("/test", testRoute);
 app.use("/", testRoute);
 

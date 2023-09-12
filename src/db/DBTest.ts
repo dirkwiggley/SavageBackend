@@ -45,7 +45,7 @@ class DBTest {
       attributes.forEach((attribute) => {
         insert.run(attribute.name, attribute.abbr, attribute.desc);
       });
-      res.send("Initialized attributes");
+      res.send("Initialized test");
     } catch (err) {
       console.error(err);
       return next(err);
